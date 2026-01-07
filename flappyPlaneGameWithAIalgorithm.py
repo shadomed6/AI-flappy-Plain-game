@@ -46,18 +46,18 @@ score = 0
 tower_pairs = []
 
 # Font
-font = pygame.font.Font("D:/Desktop/AIgameProject (2)/AIgameProject/ARCADECLASSIC.ttf", 60)
+font = pygame.font.Font("ARCADECLASSIC.ttf", 60)
 
 
 
 # Images 
 bg = pygame.transform.scale(
-    pygame.image.load('D:/Desktop/AIgameProject (2)/AIgameProject/newYorkBG.png'),
+    pygame.image.load('newYorkBG.png'),
     (screen_width, screen_height)
 )
-button_img = pygame.image.load('D:/Desktop/AIgameProject (2)/AIgameProject/restart.png')
+button_img = pygame.image.load('restart.png')
 ground_img = pygame.transform.scale(
-    pygame.image.load('D:/Desktop/AIgameProject (2)/AIgameProject/road.jpg'),
+    pygame.image.load('road.jpg'),
     (screen_width, 100)
 )
 def reset_game():
@@ -84,7 +84,7 @@ class plane(pygame.sprite.Sprite):
         self.load_brain() 
         
         for num in range(1, 3):
-            img_orig = pygame.image.load(f'D:/Desktop/AIgameProject (2)/AIgameProject/plane{num}.png')
+            img_orig = pygame.image.load(f'plane{num}.png')
             img = pygame.transform.scale(img_orig, (130, 120))
             self.images.append(img)
         self.image = self.images[self.index]
@@ -95,12 +95,12 @@ class plane(pygame.sprite.Sprite):
         self.last_action = 0
 
     def load_brain(self):
-        if os.path.exists('D:/Desktop/AIgameProject (2)/AIgameProject/brain.pickle'):
-            with open('D:/Desktop/AIgameProject (2)/AIgameProject/brain.pickle', 'rb') as f:
+        if os.path.exists('brain.pickle'):
+            with open('brain.pickle', 'rb') as f:
                 self.q_table = pickle.load(f)
 
     def save_brain(self):
-        with open('D:/Desktop/AIgameProject (2)/AIgameProject/brain.pickle', 'wb') as f:
+        with open('brain.pickle', 'wb') as f:
             pickle.dump(self.q_table, f)
 
     def get_state(self, towers_group):
@@ -197,7 +197,7 @@ class Tower(pygame.sprite.Sprite):
         # adding AI code to know which tower is top and which is bottom
         self.position = position
 
-        img_orig = pygame.image.load('D:/Desktop/AIgameProject (2)/AIgameProject/tower.png')
+        img_orig = pygame.image.load('tower.png')
         self.image = pygame.transform.scale(img_orig, (120, 600))
         self.rect = self.image.get_rect()
         if position == 1:  # top tower
@@ -252,7 +252,7 @@ pygame.mixer.init() # Initialize the sound system
 
 # 1. Load the music file
 
-pygame.mixer.music.load('D:/Desktop/AIgameProject (2)/AIgameProject/BGmusic.wav') 
+pygame.mixer.music.load('BGmusic.wav') 
 
 # 2. Set the Volume
 
@@ -264,12 +264,12 @@ pygame.mixer.music.play(-1, 0.0)
 
 
 # --- jump SFX ---
-jump_fx = pygame.mixer.Sound('D:/Desktop/AIgameProject (2)/AIgameProject/jump.wav')
+jump_fx = pygame.mixer.Sound('jump.wav')
 jump_fx.set_volume(0.5)
 
 
 # --- crash SFX ---
-crash_fx = pygame.mixer.Sound('D:/Desktop/AIgameProject (2)/AIgameProject/crash.wav')
+crash_fx = pygame.mixer.Sound('crash.wav')
 crash_fx.set_volume(0.5)
 
 
@@ -372,3 +372,4 @@ while run:
     pygame.display.update()
 
 pygame.quit()
+
