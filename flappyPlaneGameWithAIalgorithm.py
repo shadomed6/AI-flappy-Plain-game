@@ -327,7 +327,7 @@ while run:
             crash_fx.play()
             
             # punishment
-            flappy.update_brain(-700, towers_group)
+            flappy.update_brain(-1000, towers_group)
             flappy.save_brain()
 
             # Restart
@@ -372,4 +372,5 @@ while run:
     pygame.display.update()
 
 pygame.quit()
+
 
